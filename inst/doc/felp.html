@@ -7,6 +7,7 @@
 <meta charset="utf-8" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -18,9 +19,9 @@
 
 <style type="text/css">code{white-space: pre;}</style>
 <style type="text/css" data-origin="pandoc">
-a.sourceLine { display: inline-block; line-height: 1.25; }
-a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode { white-space: pre; position: relative; }
 div.sourceCode { margin: 1em 0; }
@@ -30,14 +31,16 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 code.sourceCode { white-space: pre-wrap; }
-a.sourceLine { text-indent: -1em; padding-left: 1em; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
-pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
-pre.numberSource a.sourceLine::before
-  { content: attr(title);
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
+    border: none; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -46,9 +49,9 @@ pre.numberSource a.sourceLine::before
   }
 pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
-  {  }
+  {   }
 @media screen {
-a.sourceLine::before { text-decoration: underline; }
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -94,7 +97,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") continue;
       var style = rule.style.cssText;
       // check if color or background-color is set
-      if (rule.style.color === '' || rule.style.backgroundColor === '') continue;
+      if (rule.style.color === '' && rule.style.backgroundColor === '') continue;
       // replace div.sourceCode by a pre.sourceCode rule
       sheets[i].deleteRule(j);
       sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
@@ -308,8 +311,8 @@ h1 {
   color: darkblue;
 }
 </style>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1"><span class="kw">library</span>(felp)</a>
-<a class="sourceLine" id="cb1-2" title="2"><span class="kw">library</span>(printr) <span class="co"># To include documents output by `?` in this article</span></a></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="kw">library</span>(felp)</span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="kw">library</span>(printr) <span class="co"># To include documents output by `?` in this article</span></span></code></pre></div>
 <p>The <code>felp</code> package provides</p>
 <ul>
 <li>the <code>?.</code> pseudo-post fix operator to simultaneously display a help document and a structure of an object</li>
@@ -318,43 +321,43 @@ h1 {
 </ul>
 <div id="syntax" class="section level1">
 <h1>Syntax</h1>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" title="1"><span class="co"># ? as a prefix operator</span></a>
-<a class="sourceLine" id="cb2-2" title="2">?help</a>
-<a class="sourceLine" id="cb2-3" title="3">?utils<span class="op">::</span>help</a>
-<a class="sourceLine" id="cb2-4" title="4"></a>
-<a class="sourceLine" id="cb2-5" title="5"><span class="co"># ?. as a pseudo postfix operator for functions and objects</span></a>
-<a class="sourceLine" id="cb2-6" title="6">help?.</a>
-<a class="sourceLine" id="cb2-7" title="7">utils<span class="op">::</span>help?.</a>
-<a class="sourceLine" id="cb2-8" title="8"></a>
-<a class="sourceLine" id="cb2-9" title="9"><span class="co"># ?p as a pseudo postfix operator fur packages</span></a>
-<a class="sourceLine" id="cb2-10" title="10">utils?p</a>
-<a class="sourceLine" id="cb2-11" title="11"></a>
-<a class="sourceLine" id="cb2-12" title="12"><span class="co"># felp as an extention of utils::help</span></a>
-<a class="sourceLine" id="cb2-13" title="13"><span class="kw">felp</span>(help)</a>
-<a class="sourceLine" id="cb2-14" title="14"><span class="kw">felp</span>(<span class="st">&quot;help&quot;</span>)</a>
-<a class="sourceLine" id="cb2-15" title="15"><span class="kw">felp</span>(utils<span class="op">::</span>help)</a>
-<a class="sourceLine" id="cb2-16" title="16"><span class="kw">felp</span>(help, utils)</a>
-<a class="sourceLine" id="cb2-17" title="17"><span class="kw">felp</span>(<span class="dt">package =</span> utils)</a></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="co"># ? as a prefix operator</span></span>
+<span id="cb2-2"><a href="#cb2-2"></a>?help</span>
+<span id="cb2-3"><a href="#cb2-3"></a>?utils<span class="op">::</span>help</span>
+<span id="cb2-4"><a href="#cb2-4"></a></span>
+<span id="cb2-5"><a href="#cb2-5"></a><span class="co"># ?. as a pseudo postfix operator for functions and objects</span></span>
+<span id="cb2-6"><a href="#cb2-6"></a>help?.</span>
+<span id="cb2-7"><a href="#cb2-7"></a>utils<span class="op">::</span>help?.</span>
+<span id="cb2-8"><a href="#cb2-8"></a></span>
+<span id="cb2-9"><a href="#cb2-9"></a><span class="co"># ?p as a pseudo postfix operator fur packages</span></span>
+<span id="cb2-10"><a href="#cb2-10"></a>utils?p</span>
+<span id="cb2-11"><a href="#cb2-11"></a></span>
+<span id="cb2-12"><a href="#cb2-12"></a><span class="co"># felp as an extention of utils::help</span></span>
+<span id="cb2-13"><a href="#cb2-13"></a><span class="kw">felp</span>(help)</span>
+<span id="cb2-14"><a href="#cb2-14"></a><span class="kw">felp</span>(<span class="st">&quot;help&quot;</span>)</span>
+<span id="cb2-15"><a href="#cb2-15"></a><span class="kw">felp</span>(utils<span class="op">::</span>help)</span>
+<span id="cb2-16"><a href="#cb2-16"></a><span class="kw">felp</span>(help, utils)</span>
+<span id="cb2-17"><a href="#cb2-17"></a><span class="kw">felp</span>(<span class="dt">package =</span> utils)</span></code></pre></div>
 </div>
 <div id="felpfunction" class="section level1">
 <h1>felp(function)</h1>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" title="1">felp?. <span class="co"># and `felp(felp)` return source and document of `felp` function</span></a></code></pre></div>
-<div class="sourceCode" id="cb4"><pre class="sourceCode text r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" title="1"><span class="cf">function</span> (topic, <span class="dt">package =</span> <span class="ot">NULL</span>, ...) </a>
-<a class="sourceLine" id="cb4-2" title="2">{</a>
-<a class="sourceLine" id="cb4-3" title="3">    <span class="cf">if</span> (<span class="kw">missing</span>(topic)) </a>
-<a class="sourceLine" id="cb4-4" title="4">        <span class="kw">return</span>(<span class="kw">do.call</span>(help, <span class="kw">list</span>(<span class="dt">package =</span> <span class="kw">substitute</span>(package), </a>
-<a class="sourceLine" id="cb4-5" title="5">            ...)))</a>
-<a class="sourceLine" id="cb4-6" title="6">    t &lt;-<span class="st"> </span><span class="kw">rev</span>(<span class="kw">as.character</span>(<span class="kw">substitute</span>(topic)))</a>
-<a class="sourceLine" id="cb4-7" title="7">    p &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw">as.character</span>(<span class="kw">substitute</span>(package)), t[2L])[1L]</a>
-<a class="sourceLine" id="cb4-8" title="8">    <span class="cf">if</span> (<span class="kw">is.na</span>(p)) </a>
-<a class="sourceLine" id="cb4-9" title="9">        p &lt;-<span class="st"> </span><span class="ot">NULL</span></a>
-<a class="sourceLine" id="cb4-10" title="10">    <span class="kw">str</span>(<span class="kw">get</span>(t[1L], <span class="dt">envir =</span> <span class="cf">if</span> (<span class="kw">is.null</span>(p)) </a>
-<a class="sourceLine" id="cb4-11" title="11">        <span class="kw">parent.frame</span>()</a>
-<a class="sourceLine" id="cb4-12" title="12">    <span class="cf">else</span> <span class="kw">asNamespace</span>(p)))</a>
-<a class="sourceLine" id="cb4-13" title="13">    <span class="kw">try</span>(<span class="kw">help</span>(t[1L], p[1L], ...))</a>
-<a class="sourceLine" id="cb4-14" title="14">}</a>
-<a class="sourceLine" id="cb4-15" title="15"><span class="op">&lt;</span>bytecode<span class="op">:</span><span class="st"> </span><span class="dv">0x55bed20fa108</span><span class="op">&gt;</span></a>
-<a class="sourceLine" id="cb4-16" title="16"><span class="er">&lt;</span>environment<span class="op">:</span><span class="st"> </span>namespace<span class="op">:</span>felp<span class="op">&gt;</span></a></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>felp?. <span class="co"># and `felp(felp)` return source and document of `felp` function</span></span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode text r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="cf">function</span> (topic, <span class="dt">package =</span> <span class="ot">NULL</span>, ...) </span>
+<span id="cb4-2"><a href="#cb4-2"></a>{</span>
+<span id="cb4-3"><a href="#cb4-3"></a>    <span class="cf">if</span> (<span class="kw">missing</span>(topic)) </span>
+<span id="cb4-4"><a href="#cb4-4"></a>        <span class="kw">return</span>(<span class="kw">do.call</span>(help, <span class="kw">list</span>(<span class="dt">package =</span> <span class="kw">substitute</span>(package), </span>
+<span id="cb4-5"><a href="#cb4-5"></a>            ...)))</span>
+<span id="cb4-6"><a href="#cb4-6"></a>    t &lt;-<span class="st"> </span><span class="kw">rev</span>(<span class="kw">as.character</span>(<span class="kw">substitute</span>(topic)))</span>
+<span id="cb4-7"><a href="#cb4-7"></a>    p &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw">as.character</span>(<span class="kw">substitute</span>(package)), t[2L])[1L]</span>
+<span id="cb4-8"><a href="#cb4-8"></a>    <span class="cf">if</span> (<span class="kw">is.na</span>(p)) </span>
+<span id="cb4-9"><a href="#cb4-9"></a>        p &lt;-<span class="st"> </span><span class="ot">NULL</span></span>
+<span id="cb4-10"><a href="#cb4-10"></a>    <span class="kw">str</span>(<span class="kw">get</span>(t[1L], <span class="dt">envir =</span> <span class="cf">if</span> (<span class="kw">is.null</span>(p)) </span>
+<span id="cb4-11"><a href="#cb4-11"></a>        <span class="kw">parent.frame</span>()</span>
+<span id="cb4-12"><a href="#cb4-12"></a>    <span class="cf">else</span> <span class="kw">asNamespace</span>(p)))</span>
+<span id="cb4-13"><a href="#cb4-13"></a>    <span class="kw">try</span>(<span class="kw">help</span>(t[1L], p[1L], ...))</span>
+<span id="cb4-14"><a href="#cb4-14"></a>}</span>
+<span id="cb4-15"><a href="#cb4-15"></a><span class="op">&lt;</span>bytecode<span class="op">:</span><span class="st"> </span><span class="dv">0x55631076cf38</span><span class="op">&gt;</span></span>
+<span id="cb4-16"><a href="#cb4-16"></a><span class="er">&lt;</span>environment<span class="op">:</span><span class="st"> </span>namespace<span class="op">:</span>felp<span class="op">&gt;</span></span></code></pre></div>
 <div class="r-help-page">
 <table width="100%" summary="page for felp">
 <tr>
@@ -475,7 +478,7 @@ felp(package = MASS)
 </div>
 <div id="felpdataset" class="section level1">
 <h1>felp(dataset)</h1>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" title="1">dummy?. <span class="co"># and `felp(dummy)` return sructure and document of `dummy` dataset.</span></a></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a>dummy?. <span class="co"># and `felp(dummy)` return sructure and document of `dummy` dataset.</span></span></code></pre></div>
 <pre class="text"><code>List of 2
  $ a: chr &quot;a&quot;
  $ b: num 1</code></pre>
@@ -515,7 +518,7 @@ An object of class <code>list</code> of length 2.
 </div>
 <div id="felppackage" class="section level1">
 <h1>felp(package)</h1>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" title="1">felp?p <span class="co"># and `felp(package = felp)` return document of `felp` package</span></a></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a>felp?p <span class="co"># and `felp(package = felp)` return document of `felp` package</span></span></code></pre></div>
 <pre class="text"><code>        Information on package &#39;felp&#39;
 
 Description:
@@ -524,7 +527,7 @@ Package:           felp
 Type:              Package
 Title:             Functional Help for Functions, Objects, and
                    Packages
-Version:           0.2.1
+Version:           0.2.2
 Author:            Atsushi Yasumoto [aut, cph, cre]
                    (&lt;https://orcid.org/0000-0002-8335-495X&gt;)
 Authors@R:         c( person( given = &quot;Atsushi&quot;, family =
@@ -549,11 +552,11 @@ LazyData:          true
 Roxygen:           list(markdown = TRUE)
 RoxygenNote:       6.1.1
 Imports:           prettycode
-Suggests:          knitr, pkgdown, printr, rmarkdown, roxygen2,
-                   testthat (&gt;= 2.1.0), covr
+Suggests:          knitr, pkgdown, printr, roxygen2, testthat (&gt;=
+                   2.1.0), covr
 VignetteBuilder:   knitr
 Language:          en-US
-Built:             R 3.6.0; ; 2019-06-11 12:24:36 UTC; unix
+Built:             R 3.6.1; ; 2019-12-06 15:00:47 UTC; unix
 
 Index:
 
@@ -563,6 +566,9 @@ felp                    Functional help which displays structure of an
                         object in addition to help</code></pre>
 </div>
 
+
+
+<!-- code folding -->
 
 
 <!-- dynamically load mathjax for compatibility with self-contained -->
