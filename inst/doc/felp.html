@@ -1,20 +1,35 @@
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
 
 <head>
 
 <meta charset="utf-8" />
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="pandoc" />
 <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 
 
 
 <title>felp</title>
 
+<script>// Hide empty <a> tag within highlighted CodeBlock for screen reader accessibility (see https://github.com/jgm/pandoc/issues/6352#issuecomment-626106786) -->
+// v0.0.1
+// Written by JooYoung Seo (jooyoung@psu.edu) and Atsushi Yasumoto on June 1st, 2020.
+
+document.addEventListener('DOMContentLoaded', function() {
+  const codeList = document.getElementsByClassName("sourceCode");
+  for (var i = 0; i < codeList.length; i++) {
+    var linkList = codeList[i].getElementsByTagName('a');
+    for (var j = 0; j < linkList.length; j++) {
+      if (linkList[j].innerHTML === "") {
+        linkList[j].setAttribute('aria-hidden', 'true');
+      }
+    }
+  }
+});
+</script>
 
 
 <style type="text/css">code{white-space: pre;}</style>
@@ -118,9 +133,6 @@ padding-right: 2em;
 font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
 font-size: 14px;
 line-height: 1.35;
-}
-#header {
-text-align: center;
 }
 #TOC {
 clear: both;
@@ -289,7 +301,8 @@ code > span.st { color: #d14; }
 code > span.co { color: #888888; font-style: italic; } 
 code > span.ot { color: #007020; } 
 code > span.al { color: #ff0000; font-weight: bold; } 
-code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61717; background-color: #e3d2d2; } 
+code > span.fu { color: #900; font-weight: bold; } 
+code > span.er { color: #a61717; background-color: #e3d2d2; } 
 </style>
 
 
@@ -356,7 +369,7 @@ h1 {
 <span id="cb4-12"><a href="#cb4-12"></a>    <span class="cf">else</span> <span class="kw">asNamespace</span>(p)))</span>
 <span id="cb4-13"><a href="#cb4-13"></a>    <span class="kw">try</span>(<span class="kw">help</span>(t[1L], p[1L], ...))</span>
 <span id="cb4-14"><a href="#cb4-14"></a>}</span>
-<span id="cb4-15"><a href="#cb4-15"></a><span class="op">&lt;</span>bytecode<span class="op">:</span><span class="st"> </span><span class="dv">0x55631076cf38</span><span class="op">&gt;</span></span>
+<span id="cb4-15"><a href="#cb4-15"></a><span class="op">&lt;</span>bytecode<span class="op">:</span><span class="st"> </span><span class="dv">0x55f5485a15a0</span><span class="op">&gt;</span></span>
 <span id="cb4-16"><a href="#cb4-16"></a><span class="er">&lt;</span>environment<span class="op">:</span><span class="st"> </span>namespace<span class="op">:</span>felp<span class="op">&gt;</span></span></code></pre></div>
 <div class="r-help-page">
 <table width="100%" summary="page for felp">
@@ -424,7 +437,7 @@ Arguments passed on to <code>utils::help</code>
 </p>
 <dl>
 <dt>
-lib.loc
+<code>lib.loc</code>
 </dt>
 <dd>
 <p>
@@ -432,7 +445,7 @@ a character vector of directory names of <span style="font-family: Courier New, 
 </p>
 </dd>
 <dt>
-verbose
+<code>verbose</code>
 </dt>
 <dd>
 <p>
@@ -440,7 +453,7 @@ logical; if <code>TRUE</code>, the file name is reported.
 </p>
 </dd>
 <dt>
-try.all.packages
+<code>try.all.packages</code>
 </dt>
 <dd>
 <p>
@@ -448,7 +461,7 @@ logical; see <code>Note</code>.
 </p>
 </dd>
 <dt>
-help_type
+<code>help_type</code>
 </dt>
 <dd>
 <p>
@@ -469,8 +482,8 @@ felp(identity)
 # Identical to help(iris); str(iris)
 felp(iris)
 
-# Identical to help(package = MASS)
-felp(package = MASS)
+# Identical to help(package = stats)
+felp(package = stats)
 
 
 </pre>
@@ -525,42 +538,39 @@ Description:
 
 Package:           felp
 Type:              Package
-Title:             Functional Help for Functions, Objects, and
-                   Packages
-Version:           0.2.2
+Title:             Functional Help for Functions, Objects, and Packages
+Version:           0.2.3
 Author:            Atsushi Yasumoto [aut, cph, cre]
                    (&lt;https://orcid.org/0000-0002-8335-495X&gt;)
-Authors@R:         c( person( given = &quot;Atsushi&quot;, family =
-                   &quot;Yasumoto&quot;, role = c(&quot;aut&quot;, &quot;cph&quot;, &quot;cre&quot;),
-                   email = &quot;atusy.rpkg@gmail.com&quot;, comment =
-                   c(ORCID = &quot;0000-0002-8335-495X&quot;) ) )
+Authors@R:         c( person( given = &quot;Atsushi&quot;, family = &quot;Yasumoto&quot;,
+                   role = c(&quot;aut&quot;, &quot;cph&quot;, &quot;cre&quot;), email =
+                   &quot;atusy.rpkg@gmail.com&quot;, comment = c(ORCID =
+                   &quot;0000-0002-8335-495X&quot;) ) )
 Maintainer:        Atsushi Yasumoto &lt;atusy.rpkg@gmail.com&gt;
 Description:       Provides pseudo-postfix operators and more to
                    enhance displaying documents.  The `?.`
-                   pseudo-postfix operator and the `?` prefix
-                   operator displays documents and contents
-                   (source or structure) of objects simultaneously
-                   to help understanding the objects.  The `?p`
-                   pseudo-postfix operator displays package
-                   documents, and is shorter than help(package =
-                   foo).
+                   pseudo-postfix operator and the `?` prefix operator
+                   displays documents and contents (source or
+                   structure) of objects simultaneously to help
+                   understanding the objects.  The `?p` pseudo-postfix
+                   operator displays package documents, and is shorter
+                   than help(package = foo).
 URL:               https://github.com/atusy/felp
 BugReports:        https://github.com/atusy/felp/issues
 License:           MIT + file LICENSE
 Encoding:          UTF-8
 LazyData:          true
 Roxygen:           list(markdown = TRUE)
-RoxygenNote:       6.1.1
-Imports:           prettycode
-Suggests:          knitr, pkgdown, printr, roxygen2, testthat (&gt;=
-                   2.1.0), covr
+RoxygenNote:       7.1.1
+Imports:           prettycode, curl
+Suggests:          knitr, printr, testthat (&gt;= 2.1.0), covr, rmarkdown
 VignetteBuilder:   knitr
 Language:          en-US
-Built:             R 3.6.1; ; 2019-12-06 15:00:47 UTC; unix
+Built:             R 4.0.2; ; 2020-09-13 23:07:28 UTC; unix
 
 Index:
 
-?                       Functional help with &#39;?&#39; operator
+?                       Functional help with ? operator
 dummy                   A dummy data for felp
 felp                    Functional help which displays structure of an
                         object in addition to help</code></pre>
