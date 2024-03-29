@@ -29,27 +29,27 @@ document.addEventListener('DOMContentLoaded', function(e) {
 </script>
 
 <style type="text/css">
-  code{white-space: pre-wrap;}
-  span.smallcaps{font-variant: small-caps;}
-  span.underline{text-decoration: underline;}
-  div.column{display: inline-block; vertical-align: top; width: 50%;}
-  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-  ul.task-list{list-style: none;}
-    </style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+</style>
 
 
 
 <style type="text/css">
-  code {
-    white-space: pre;
-  }
-  .sourceCode {
-    overflow: visible;
-  }
+code {
+white-space: pre;
+}
+.sourceCode {
+overflow: visible;
+}
 </style>
 <style type="text/css" data-origin="pandoc">
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -63,55 +63,54 @@ pre > code.sourceCode { white-space: pre-wrap; }
 pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
-  { counter-reset: source-line 0; }
+{ counter-reset: source-line 0; }
 pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
+{ position: relative; left: -4em; counter-increment: source-line; }
 pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-    color: #aaaaaa;
-  }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+{ content: counter(source-line);
+position: relative; left: -1em; text-align: right; vertical-align: baseline;
+border: none; display: inline-block;
+-webkit-touch-callout: none; -webkit-user-select: none;
+-khtml-user-select: none; -moz-user-select: none;
+-ms-user-select: none; user-select: none;
+padding: 0 4px; width: 4em;
+color: #aaaaaa;
+}
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa; padding-left: 4px; }
 div.sourceCode
-  {   }
+{ }
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-
+code span.al { color: #ff0000; font-weight: bold; } 
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.at { color: #7d9029; } 
+code span.bn { color: #40a070; } 
+code span.bu { color: #008000; } 
+code span.cf { color: #007020; font-weight: bold; } 
+code span.ch { color: #4070a0; } 
+code span.cn { color: #880000; } 
+code span.co { color: #60a0b0; font-style: italic; } 
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.do { color: #ba2121; font-style: italic; } 
+code span.dt { color: #902000; } 
+code span.dv { color: #40a070; } 
+code span.er { color: #ff0000; font-weight: bold; } 
+code span.ex { } 
+code span.fl { color: #40a070; } 
+code span.fu { color: #06287e; } 
+code span.im { color: #008000; font-weight: bold; } 
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.kw { color: #007020; font-weight: bold; } 
+code span.op { color: #666666; } 
+code span.ot { color: #007020; } 
+code span.pp { color: #bc7a00; } 
+code span.sc { color: #4070a0; } 
+code span.ss { color: #bb6688; } 
+code span.st { color: #4070a0; } 
+code span.va { color: #19177c; } 
+code span.vs { color: #4070a0; } 
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } 
 </style>
 <script>
 // apply pandoc div.sourceCode style to pre.sourceCode instead
@@ -343,11 +342,11 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 
 <style type="text/css">
 h1 {
-  color: darkblue;
+color: darkblue;
 }
 </style>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(felp)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(printr) <span class="co"># To include documents output by `?` in this article</span></span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="fu">library</span>(felp)</span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a><span class="fu">library</span>(printr) <span class="co"># To include documents output by `?` in this article</span></span></code></pre></div>
 <p>The <code>felp</code> package provides</p>
 <ul>
 <li>the <code>?.</code> pseudo-post fix operator to simultaneously
@@ -360,171 +359,115 @@ by displaying structure of an object</li>
 </ul>
 <div id="syntax" class="section level1">
 <h1>Syntax</h1>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ? as a prefix operator</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>?help</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>?utils<span class="sc">::</span>help</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co"># ?. as a pseudo postfix operator for functions and objects</span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>help?.</span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>utils<span class="sc">::</span>help?.</span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="co"># ?p as a pseudo postfix operator fur packages</span></span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>utils?p</span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="co"># felp as an extention of utils::help</span></span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="fu">felp</span>(help)</span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="fu">felp</span>(<span class="st">&quot;help&quot;</span>)</span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="fu">felp</span>(utils<span class="sc">::</span>help)</span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="fu">felp</span>(help, utils)</span>
-<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a><span class="fu">felp</span>(<span class="at">package =</span> utils)</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="co"># ? as a prefix operator</span></span>
+<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a>?help</span>
+<span id="cb2-3"><a href="#cb2-3" tabindex="-1"></a>?utils<span class="sc">::</span>help</span>
+<span id="cb2-4"><a href="#cb2-4" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="#cb2-5" tabindex="-1"></a><span class="co"># ?. as a pseudo postfix operator for functions and objects</span></span>
+<span id="cb2-6"><a href="#cb2-6" tabindex="-1"></a>help?.</span>
+<span id="cb2-7"><a href="#cb2-7" tabindex="-1"></a>utils<span class="sc">::</span>help?.</span>
+<span id="cb2-8"><a href="#cb2-8" tabindex="-1"></a></span>
+<span id="cb2-9"><a href="#cb2-9" tabindex="-1"></a><span class="co"># ?p as a pseudo postfix operator fur packages</span></span>
+<span id="cb2-10"><a href="#cb2-10" tabindex="-1"></a>utils?p</span>
+<span id="cb2-11"><a href="#cb2-11" tabindex="-1"></a></span>
+<span id="cb2-12"><a href="#cb2-12" tabindex="-1"></a><span class="co"># felp as an extention of utils::help</span></span>
+<span id="cb2-13"><a href="#cb2-13" tabindex="-1"></a><span class="fu">felp</span>(help)</span>
+<span id="cb2-14"><a href="#cb2-14" tabindex="-1"></a><span class="fu">felp</span>(<span class="st">&quot;help&quot;</span>)</span>
+<span id="cb2-15"><a href="#cb2-15" tabindex="-1"></a><span class="fu">felp</span>(utils<span class="sc">::</span>help)</span>
+<span id="cb2-16"><a href="#cb2-16" tabindex="-1"></a><span class="fu">felp</span>(help, utils)</span>
+<span id="cb2-17"><a href="#cb2-17" tabindex="-1"></a><span class="fu">felp</span>(<span class="at">package =</span> utils)</span></code></pre></div>
 </div>
 <div id="felpfunction" class="section level1">
 <h1>felp(function)</h1>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>felp?. <span class="co"># and `felp(felp)` return source and document of `felp` function</span></span></code></pre></div>
-<div class="sourceCode" id="cb4"><pre class="sourceCode text r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="cf">function</span> (topic, <span class="at">package =</span> <span class="cn">NULL</span>, ...) </span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>{</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (<span class="fu">missing</span>(topic)) </span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>        <span class="fu">return</span>(<span class="fu">do.call</span>(help, <span class="fu">list</span>(<span class="at">package =</span> <span class="fu">substitute</span>(package), </span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>            ...)))</span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    t <span class="ot">&lt;-</span> <span class="fu">rev</span>(<span class="fu">as.character</span>(<span class="fu">substitute</span>(topic)))</span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    p <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">as.character</span>(<span class="fu">substitute</span>(package)), t[2L])[1L]</span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (<span class="fu">is.na</span>(p)) </span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>        p <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">str</span>(<span class="fu">get</span>(t[1L], <span class="at">envir =</span> <span class="cf">if</span> (<span class="fu">is.null</span>(p)) </span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>        <span class="fu">parent.frame</span>()</span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span> <span class="fu">asNamespace</span>(p)))</span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">try</span>(<span class="fu">help</span>(t[1L], p[1L], ...))</span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a><span class="sc">&lt;</span>bytecode<span class="sc">:</span> <span class="dv">0x55d7f6a06c68</span><span class="sc">&gt;</span></span>
-<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a><span class="er">&lt;</span>environment<span class="sc">:</span> namespace<span class="sc">:</span>felp<span class="sc">&gt;</span></span></code></pre></div>
-<pre><code>Warning in max(i1[i1 &lt; i]): no non-missing arguments to max; returning -Inf
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a>felp?. <span class="co"># and `felp(felp)` return source and document of `felp` function</span></span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode text r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="cf">function</span> (topic, <span class="at">package =</span> <span class="cn">NULL</span>, ...) </span>
+<span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a>{</span>
+<span id="cb4-3"><a href="#cb4-3" tabindex="-1"></a>    <span class="cf">if</span> (<span class="fu">missing</span>(topic)) </span>
+<span id="cb4-4"><a href="#cb4-4" tabindex="-1"></a>        <span class="fu">return</span>(<span class="fu">do.call</span>(help, <span class="fu">list</span>(<span class="at">package =</span> <span class="fu">substitute</span>(package), </span>
+<span id="cb4-5"><a href="#cb4-5" tabindex="-1"></a>            ...)))</span>
+<span id="cb4-6"><a href="#cb4-6" tabindex="-1"></a>    t <span class="ot">&lt;-</span> <span class="fu">rev</span>(<span class="fu">as.character</span>(<span class="fu">substitute</span>(topic)))</span>
+<span id="cb4-7"><a href="#cb4-7" tabindex="-1"></a>    p <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">as.character</span>(<span class="fu">substitute</span>(package)), t[<span class="dv">2</span><span class="dt">L</span>])[<span class="dv">1</span><span class="dt">L</span>]</span>
+<span id="cb4-8"><a href="#cb4-8" tabindex="-1"></a>    <span class="cf">if</span> (<span class="fu">is.na</span>(p)) </span>
+<span id="cb4-9"><a href="#cb4-9" tabindex="-1"></a>        p <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
+<span id="cb4-10"><a href="#cb4-10" tabindex="-1"></a>    <span class="fu">str</span>(<span class="fu">get</span>(t[<span class="dv">1</span><span class="dt">L</span>], <span class="at">envir =</span> <span class="cf">if</span> (<span class="fu">is.null</span>(p)) </span>
+<span id="cb4-11"><a href="#cb4-11" tabindex="-1"></a>        <span class="fu">parent.frame</span>()</span>
+<span id="cb4-12"><a href="#cb4-12" tabindex="-1"></a>    <span class="cf">else</span> <span class="fu">asNamespace</span>(p)))</span>
+<span id="cb4-13"><a href="#cb4-13" tabindex="-1"></a>    <span class="fu">try</span>(<span class="fu">help</span>(t[<span class="dv">1</span><span class="dt">L</span>], p[<span class="dv">1</span><span class="dt">L</span>], ...))</span>
+<span id="cb4-14"><a href="#cb4-14" tabindex="-1"></a>}</span>
+<span id="cb4-15"><a href="#cb4-15" tabindex="-1"></a><span class="sc">&lt;</span>bytecode<span class="sc">:</span> <span class="dv">0x55d608dc9bc8</span><span class="sc">&gt;</span></span>
+<span id="cb4-16"><a href="#cb4-16" tabindex="-1"></a><span class="er">&lt;</span>environment<span class="sc">:</span> namespace<span class="sc">:</span>felp<span class="sc">&gt;</span></span></code></pre></div>
+<div class="r-help-page"><div class="container">
 
-Warning in max(i1[i1 &lt; i]): no non-missing arguments to max; returning -Inf
+<table style="width: 100%;"><tr><td>felp</td><td style="text-align: right;">R Documentation</td></tr></table>
 
-Warning in max(i1[i1 &lt; i]): no non-missing arguments to max; returning -Inf
+<h2 id="felp">Functional help which displays structure of an object in addition to help</h2>
 
-Warning in max(i1[i1 &lt; i]): no non-missing arguments to max; returning -Inf</code></pre>
-<div class="r-help-page">
-<div class="container">
-<table style="width: 100%;">
-<tr>
-<td>
-felp
-</td>
-<td style="text-align: right;">
-R Documentation
-</td>
-</tr>
-</table>
-<h2>
-Functional help which displays structure of an object in addition to
-help
-</h2>
-<h3>
-Description
-</h3>
-<p>
-Structure of object is returned by <code>str()</code>. For a function,
-its source is returned instead of <code>str()</code>.
+<h3>Description</h3>
+
+<p>Structure of object is returned by <code>str()</code>.
+For a function, its source is returned instead of <code>str()</code>.
 </p>
-<h3>
-Usage
-</h3>
-<pre class="r"><code class="language-R">felp(topic, package = NULL, ...)
+
+
+<h3>Usage</h3>
+
+<pre><code class="language-R">felp(topic, package = NULL, ...)
 </code></pre>
-<h3>
-Arguments
-</h3>
+
+
+<h3>Arguments</h3>
+
 <table>
-<tr style="vertical-align: top;">
+<tr><td><code id="felp_:_topic">topic</code></td>
 <td>
-<code>topic</code>
-</td>
-<td>
-<p>
-usually, a name or character string specifying the topic for which help
-is sought. A character string (enclosed in explicit single or double
-quotes) is always taken as naming a topic.
+<p>usually, a name or character string specifying the
+topic for which help is sought.  A character string (enclosed in
+explicit single or double quotes) is always taken as naming a topic.
 </p>
-<p>
-If the value of <code>topic</code> is a length-one character vector the
-topic is taken to be the value of the only element. Otherwise
-<code>topic</code> must be a name or a reserved word (if syntactically
-valid) or character string.
+<p>If the value of <code>topic</code> is a length-one
+character vector the topic is taken to be the value of the only
+element.  Otherwise <code>topic</code> must be a name or a reserved
+word (if syntactically valid) or character string.
 </p>
-<p>
-See ‘Details’ for what happens if this is omitted.
+<p>See ‘Details’ for what happens if this is omitted.
 </p>
-</td>
-</tr>
-<tr style="vertical-align: top;">
+</td></tr>
+<tr><td><code id="felp_:_package">package</code></td>
 <td>
-<code>package</code>
-</td>
+<p>a name or character vector giving the packages to look
+into for documentation, or <code>NULL</code>.  By default, all packages
+whose namespaces are loaded are used.  To avoid a name being deparsed use e.g.
+<code>(pkg_ref)</code> (see the examples).</p>
+</td></tr>
+<tr><td><code id="felp_:_...">...</code></td>
 <td>
-<p>
-a name or character vector giving the packages to look into for
-documentation, or <code>NULL</code>. By default, all packages whose
-namespaces are loaded are used. To avoid a name being deparsed use e.g.
-<code>(pkg_ref)</code> (see the examples).
+
+<p>Arguments passed on to <code>utils::help</code>
 </p>
-</td>
-</tr>
-<tr style="vertical-align: top;">
-<td>
-<code>…</code>
-</td>
-<td>
-<p>
-Arguments passed on to <code>utils::help</code>
-</p>
+
 <dl>
-<dt>
-<code>lib.loc</code>
-</dt>
-<dd>
-<p>
-a character vector of directory names of <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span>
-libraries, or <code>NULL</code>. The default value of <code>NULL</code>
-corresponds to all libraries currently known. If the default is used,
-the loaded packages are searched before the libraries. This is not used
-for HTML help (see ‘Details’).
-</p>
+<dt><code>lib.loc</code></dt><dd><p>a character vector of directory names of <span class="rlang"><b>R</b></span> libraries,
+or <code>NULL</code>.  The default value of <code>NULL</code> corresponds to all
+libraries currently known.  If the default is used, the loaded
+packages are searched before the libraries.  This is not used for
+HTML help (see ‘Details’).</p>
 </dd>
-<dt>
-<code>verbose</code>
-</dt>
-<dd>
-<p>
-logical; if <code>TRUE</code>, the file name is reported.
-</p>
+<dt><code>verbose</code></dt><dd><p>logical; if <code>TRUE</code>, the file name is reported.</p>
 </dd>
-<dt>
-<code>try.all.packages</code>
-</dt>
-<dd>
-<p>
-logical; see <code>Note</code>.
-</p>
+<dt><code>try.all.packages</code></dt><dd><p>logical; see <code>Note</code>.</p>
 </dd>
-<dt>
-<code>help_type</code>
-</dt>
-<dd>
-<p>
-character string: the type of help required. Possible values are
-<code>“text”</code>, <code>“html”</code> and <code>“pdf”</code>. Case is
-ignored, and partial matching is allowed.
-</p>
+<dt><code>help_type</code></dt><dd><p>character string: the type of help required.
+Possible values are <code>&quot;text&quot;</code>, <code>&quot;html&quot;</code> and <code>&quot;pdf&quot;</code>.
+Case is ignored, and partial matching is allowed.</p>
 </dd>
 </dl>
-</td>
-</tr>
+</td></tr>
 </table>
-<h3>
-Examples
-</h3>
-<pre class="r"><code class="language-R"># Identical to help(identity); print(identity)
+
+
+<h3>Examples</h3>
+
+<pre><code class="language-R"># Identical to help(identity); print(identity)
 felp(identity)
 
 # Identical to help(iris); str(iris)
@@ -535,60 +478,47 @@ felp(package = stats)
 
 
 </code></pre>
+
+
 </div>
 </div>
 </div>
 <div id="felpdataset" class="section level1">
 <h1>felp(dataset)</h1>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>dummy?. <span class="co"># and `felp(dummy)` return sructure and document of `dummy` dataset.</span></span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a>dummy?. <span class="co"># and `felp(dummy)` return sructure and document of `dummy` dataset.</span></span></code></pre></div>
 <pre class="text"><code>List of 2
  $ a: chr &quot;a&quot;
  $ b: num 1</code></pre>
-<pre><code>Warning in max(i1[i1 &lt; i]): no non-missing arguments to max; returning -Inf
+<div class="r-help-page"><div class="container">
 
-Warning in max(i1[i1 &lt; i]): no non-missing arguments to max; returning -Inf
+<table style="width: 100%;"><tr><td>dummy</td><td style="text-align: right;">R Documentation</td></tr></table>
 
-Warning in max(i1[i1 &lt; i]): no non-missing arguments to max; returning -Inf
+<h2 id="dummy">A dummy data for felp</h2>
 
-Warning in max(i1[i1 &lt; i]): no non-missing arguments to max; returning -Inf</code></pre>
-<div class="r-help-page">
-<div class="container">
-<table style="width: 100%;">
-<tr>
-<td>
-dummy
-</td>
-<td style="text-align: right;">
-R Documentation
-</td>
-</tr>
-</table>
-<h2>
-A dummy data for felp
-</h2>
-<h3>
-Description
-</h3>
-<p>
-A dummy data for felp
+<h3>Description</h3>
+
+<p>A dummy data for felp
 </p>
-<h3>
-Usage
-</h3>
-<pre class="r"><code class="language-R">dummy
+
+
+<h3>Usage</h3>
+
+<pre><code class="language-R">dummy
 </code></pre>
-<h3>
-Format
-</h3>
-<p>
-An object of class <code>list</code> of length 2.
+
+
+<h3>Format</h3>
+
+<p>An object of class <code>list</code> of length 2.
 </p>
+
+
 </div>
 </div>
 </div>
 <div id="felppackage" class="section level1">
 <h1>felp(package)</h1>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>felp?p <span class="co"># and `felp(package = felp)` return document of `felp` package</span></span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a>felp?p <span class="co"># and `felp(package = felp)` return document of `felp` package</span></span></code></pre></div>
 <pre class="text"><code>        Information on package &#39;felp&#39;
 
 Description:
@@ -596,7 +526,7 @@ Description:
 Package:           felp
 Type:              Package
 Title:             Functional Help for Functions, Objects, and Packages
-Version:           0.3.0
+Version:           0.4.0
 Author:            Atsushi Yasumoto [aut, cph, cre]
                    (&lt;https://orcid.org/0000-0002-8335-495X&gt;)
 Authors@R:         c( person( given = &quot;Atsushi&quot;, family = &quot;Yasumoto&quot;,
@@ -617,14 +547,14 @@ BugReports:        https://github.com/atusy/felp/issues
 License:           MIT + file LICENSE
 Encoding:          UTF-8
 Roxygen:           list(markdown = TRUE)
-RoxygenNote:       7.2.1
-Imports:           prettycode, curl, data.table, dplyr, htmltools,
-                   magrittr, matrixStats, miniUI, reactable,
+RoxygenNote:       7.2.3
+Imports:           prettycode, callr, curl, data.table, dplyr,
+                   htmltools, magrittr, matrixStats, miniUI, reactable,
                    rstudioapi, rlang, shiny, stringi, utils
 Suggests:          knitr, printr, testthat (&gt;= 2.1.0), covr, rmarkdown
 VignetteBuilder:   knitr
 Language:          en-US
-Built:             R 4.2.1; ; 2022-10-09 12:49:19 UTC; unix
+Built:             R 4.3.3; ; 2024-03-29 15:42:46 UTC; unix
 
 Index:
 
