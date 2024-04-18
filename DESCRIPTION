@@ -1,7 +1,7 @@
 Package: felp
 Type: Package
 Title: Functional Help for Functions, Objects, and Packages
-Version: 0.4.0
+Version: 0.5.0
 Author: Atsushi Yasumoto [aut, cph, cre]
     (<https://orcid.org/0000-0002-8335-495X>)
 Authors@R: c(
@@ -29,6 +29,6 @@ Suggests: knitr, printr, testthat (>= 2.1.0), covr, rmarkdown
 VignetteBuilder: knitr
 Language: en-US
 NeedsCompilation: no
-Packaged: 2024-03-29 15:42:48 UTC; atusy
+Packaged: 2024-04-18 15:02:13 UTC; atusy
 Repository: CRAN
-Date/Publication: 2024-03-29 16:10:02 UTC
+Date/Publication: 2024-04-18 15:22:40 UTC
