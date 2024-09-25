@@ -3,10 +3,16 @@
 NULL
 
 #' Get preview content for Shiny UI
+#'
+#' @return `list(src?: character, srcdoc?: character)`
+#'  `src` and `srcdoc` are exclusive. If dynamic help server is available,
+#'  `src` returns address to the help page. Otherwise, `srcdoc` returns
+#'  HTML content of the help page.
+#'
 #' @noRd
-get_content <- function(x, i) {
+get_content <- function(x, i, helpPort, rstudioServer) {
   if (NROW(x) == 0L || length(i) == 0L) {
-    return("")
+    return(list(srcdoc = ""))
   }
   if (length(i) > 1L) {
     warning("i should be an integer vector of the length equal to 1.")
@@ -15,33 +21,41 @@ get_content <- function(x, i) {
   type <- x$Type[i]
   topic <- x$Topic[i]
   package <- x$Package[i]
-  helpPort <- startDynamicHelp()
-  helpUrl <- "http://127.0.0.1:%d/%s/%s/%s/%s%s"
+  helpUrl <- if (rstudioServer) {
+    "/help/%s/%s/%s/%s%s"
+  } else {
+    paste0("http://127.0.0.1:", helpPort, "/%s/%s/%s/%s%s")
+  }
 
   if (type == "help") {
     if (is.null(helpPort)) {
-      return(get_help(topic, package))
+      return(list(srcdoc = if (is.null(helpPort)) get_help(topic, package)))
+    } else {
+      h <- help((topic), (package), help_type = "html")
+      return(
+        list(src = sprintf(helpUrl, "library", package, "html", basename(h), ".html"))
+      )
     }
-    h <- help((topic), (package), help_type = "html")
-    return(sprintf(helpUrl, helpPort, "library", package, "html", basename(h), ".html"))
   }
 
   if (type == "vignette") {
     if (is.null(helpPort)) {
-      return(get_vignette(topic, package))
+      return(list(srcdoc = if (is.null(helpPort)) get_vignette(topic, package)))
+    } else {
+      v <- utils::vignette(topic, package)
+      return(list(src = sprintf(helpUrl, "library", basename(v$Dir), "doc", v$PDF, "")))
     }
-    v <- utils::vignette(topic, package)
-    return(sprintf(helpUrl, helpPort, "library", basename(v$Dir), "doc", v$PDF, ""))
   }
 
   if (type == "demo") {
     if (is.null(helpPort)) {
-      return(sprintf('Call <code>demo("%s", "%s")</code> to see demo', topic, package))
+      return(list(srcdoc = sprintf('Call <code>demo("%s", "%s")</code> to see demo', topic, package)))
+    } else {
+      return(list(src = sprintf(helpUrl, "library", package, "Demo", topic, "")))
     }
-    return(sprintf(helpUrl, helpPort, "library", package, "Demo", topic, ""))
   }
 
-  paste("Viewer not available for the type:", type)
+  return(list(srcdoc = paste("Viewer not available for the type:", type)))
 }
 
 #' Create ToC of help
@@ -175,7 +189,7 @@ adist2 <- function(x, y, case_sensitive) {
 }
 
 score_toc_filtered <- list(
-  fzf = function(toc, queries) {
+  fzf = function(toc, queries, ..., score_matrix = score_matrix) {
     query_chars_list <- split_chars(queries)
     score <- score_matrix(toc$Package, query_chars_list, extra_bonus = FALSE)
     topic <- score_matrix(toc$Topic, query_chars_list, extra_bonus = FALSE)
@@ -183,7 +197,7 @@ score_toc_filtered <- list(
     score[right] <- topic[right]
     return(-colSums(score))
   },
-  lv = function(toc, queries) {
+  lv = function(toc, queries, ...) {
     res <- adist2(toc$Package, queries)
     topic <- adist2(toc$Topic, queries)
     right <- res > topic
@@ -203,7 +217,7 @@ detect <- function(package, topic, query, case_sensitive) {
   return(d)
 }
 
-score_toc <- function(toc, queries, method = c("fzf", "lv")) {
+score_toc <- function(toc, queries, method = c("fzf", "lv"), ...) {
   n <- nrow(toc)
   score <- rep(NA_integer_, n)
   method <- match.arg(method)
@@ -233,7 +247,7 @@ score_toc <- function(toc, queries, method = c("fzf", "lv")) {
 
   # Calculate and return score for filtered items
   score[prefilter] <- score_toc_filtered[[method]](
-    toc[prefilter, ], unique_queries
+    toc[prefilter, ], unique_queries, ...
   )
   return(score)
 }
@@ -263,42 +277,17 @@ create_ui <- function(query = "", background = FALSE) {
     miniUI::miniContentPanel(
       shiny::textInput(
         "query",
-        label = "Search query",
+        label = NULL,
+        placeholder = "Search query",
         value = paste(query, collapse = " "),
         width = "100%"
       ),
       reactable::reactableOutput("tocViewer", width = "100%", height = "200px"),
-      htmltools::tags$div(
-        id = "bar",
-        style = paste(
-          "width: 100%; height: 8px; cursor: row-resize;",
-          "background-color: transparent;"
-        ),
-        draggable = "true"
-      ),
       shiny::uiOutput("helpViewer"),
-      style = "display: grid; grid-template-rows: auto auto auto 1fr"
+      style = "display: grid; grid-template-rows: auto auto 1fr"
     ),
     htmltools::tags$style("
-      #tocViewer {
-        overflow: hidden;
-      }
-    "),
-    htmltools::tags$script("
-      (function(){
-        // Resize tocViewer
-        const toc = document.getElementById('tocViewer');
-        const bar = document.getElementById('bar');
-        let screenY, tocHeight
-        bar.addEventListener('dragstart', function() {
-          screenY = window.event.screenY;
-          tocHeight = toc.getBoundingClientRect().height;
-        });
-        bar.addEventListener('drag', function() {
-          const diff = window.event.screenY - screenY;
-          toc.style.height = tocHeight + diff + 'px';
-        });
-      })();
+      #tocViewer { overflow: hidden; resize: vertical; margin-bottom: 15px }
     "),
     style = "display: grid; grid-template-rows: auto 1fr; height: 100vh"
   )
@@ -309,12 +298,22 @@ parse_query <- function(string) {
   queries[queries != ""]
 }
 
-create_server <- function(method = c("fzf", "lv"), background = FALSE) {
+create_server <- function(
+    method = c("fzf", "lv"),
+    background = FALSE,
+    helpPort = NULL,
+    rstudioServer = FALSE) {
   method <- match.arg(method)
+  toc <- create_toc()
+  score_matrix2 <- memoise::memoise(score_matrix)
   function(input, output) {
-    toc <- create_toc()
     reactiveQueries <- shiny::reactive(parse_query(input$query))
-    reactiveToc <- shiny::reactive(search_toc(toc, reactiveQueries(), method = method))
+    reactiveToc <- shiny::reactive(search_toc(
+      toc,
+      reactiveQueries(),
+      method = method,
+      score_matrix = score_matrix2
+    ))
     reactiveTocViewer <- shiny::reactive(local({
       toc_matched <- dplyr::mutate(
         reactiveToc(),
@@ -332,7 +331,14 @@ create_server <- function(method = c("fzf", "lv"), background = FALSE) {
         defaultPageSize = 20,
         selection = "single",
         defaultSelected = if (nrow(toc_matched) != 0) 1L,
-        onClick = "select"
+        onClick = "select",
+        striped = TRUE,
+        highlight = TRUE,
+        theme = reactable::reactableTheme(
+          cellPadding = "2px",
+          style = list(fontSize = "0.9em"),
+          highlight = "beige"
+        )
       )
     }))
     reactiveSelection <- shiny::reactive({
@@ -341,11 +347,11 @@ create_server <- function(method = c("fzf", "lv"), background = FALSE) {
     })
     reactiveHelp <- shiny::reactive({
       arguments <- list(style = "width: 100%; height: 100%;", id = "helpViewer")
-      content <- get_content(reactiveToc(), reactiveSelection())
-      if (grepl("^http://", content)) {
-        arguments$src <- content
+      content <- get_content(reactiveToc(), reactiveSelection(), helpPort, rstudioServer)
+      if (is.null(content$srcdoc)) {
+        arguments$src <- content$src
       } else {
-        arguments$srcdoc <- content
+        arguments$srcdoc <- content$srcdoc
         arguments$onload <- "(function(){
           // replace anchors to avoid nesting shiny widgets
           const pattern = document.baseURI + '#';
@@ -389,8 +395,13 @@ create_server <- function(method = c("fzf", "lv"), background = FALSE) {
 }
 
 .env <- new.env()
+# 31537
 
-startDynamicHelp <- function() {
+startDynamicHelp <- function(background) {
+  if (background) {
+    return(tools::startDynamicHelp(NA))
+  }
+
   if (
     !is.null(.env$helpProcess) &&
       is.null(.env$helpProcess$get_exit_status()) &&
@@ -468,7 +479,9 @@ fuzzyhelp <- function(
     background = getOption("fuzzyhelp.background", TRUE),
     viewer = shiny::paneViewer()) {
   app <- create_ui(query, background)
-  server <- create_server(method, background)
+  helpPort <- startDynamicHelp(background) # NOTE: eager evaluate
+  rstudioServer <- rstudioapi::isAvailable() && rstudioapi::versionInfo()$mode == "server"
+  server <- create_server(method, background, helpPort, rstudioServer)
 
   # Create new gadget on foreground
   if (!background) {

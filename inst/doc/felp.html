@@ -60,7 +60,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
 { counter-reset: source-line 0; }
@@ -394,13 +394,13 @@ by displaying structure of an object</li>
 <span id="cb4-12"><a href="#cb4-12" tabindex="-1"></a>    <span class="cf">else</span> <span class="fu">asNamespace</span>(p)))</span>
 <span id="cb4-13"><a href="#cb4-13" tabindex="-1"></a>    <span class="fu">try</span>(<span class="fu">help</span>(t[<span class="dv">1</span><span class="dt">L</span>], p[<span class="dv">1</span><span class="dt">L</span>], ...))</span>
 <span id="cb4-14"><a href="#cb4-14" tabindex="-1"></a>}</span>
-<span id="cb4-15"><a href="#cb4-15" tabindex="-1"></a><span class="sc">&lt;</span>bytecode<span class="sc">:</span> <span class="dv">0x55b57d462ed8</span><span class="sc">&gt;</span></span>
+<span id="cb4-15"><a href="#cb4-15" tabindex="-1"></a><span class="sc">&lt;</span>bytecode<span class="sc">:</span> <span class="dv">0x560a674efd70</span><span class="sc">&gt;</span></span>
 <span id="cb4-16"><a href="#cb4-16" tabindex="-1"></a><span class="er">&lt;</span>environment<span class="sc">:</span> namespace<span class="sc">:</span>felp<span class="sc">&gt;</span></span></code></pre></div>
-<div class="r-help-page"><div class="container">
+<div class="r-help-page"><div class="container"><main>
 
 <table style="width: 100%;"><tr><td>felp</td><td style="text-align: right;">R Documentation</td></tr></table>
 
-<h2 id="felp">Functional help which displays structure of an object in addition to help</h2>
+<h2>Functional help which displays structure of an object in addition to help</h2>
 
 <h3>Description</h3>
 
@@ -418,7 +418,7 @@ For a function, its source is returned instead of <code>str()</code>.
 <h3>Arguments</h3>
 
 <table>
-<tr><td><code id="felp_:_topic">topic</code></td>
+<tr><td><code id="topic">topic</code></td>
 <td>
 <p>usually, a name or character string specifying the
 topic for which help is sought.  A character string (enclosed in
@@ -432,14 +432,14 @@ word (if syntactically valid) or character string.
 <p>See ‘Details’ for what happens if this is omitted.
 </p>
 </td></tr>
-<tr><td><code id="felp_:_package">package</code></td>
+<tr><td><code id="package">package</code></td>
 <td>
 <p>a name or character vector giving the packages to look
 into for documentation, or <code>NULL</code>.  By default, all packages
 whose namespaces are loaded are used.  To avoid a name being deparsed use e.g.
 <code>(pkg_ref)</code> (see the examples).</p>
 </td></tr>
-<tr><td><code id="felp_:_...">...</code></td>
+<tr><td><code id="...">...</code></td>
 <td>
 
 <p>Arguments passed on to <code>utils::help</code>
@@ -479,6 +479,7 @@ felp(package = stats)
 
 </code></pre>
 
+</main>
 
 </div>
 </div>
@@ -489,11 +490,11 @@ felp(package = stats)
 <pre class="text"><code>List of 2
  $ a: chr &quot;a&quot;
  $ b: num 1</code></pre>
-<div class="r-help-page"><div class="container">
+<div class="r-help-page"><div class="container"><main>
 
 <table style="width: 100%;"><tr><td>dummy</td><td style="text-align: right;">R Documentation</td></tr></table>
 
-<h2 id="dummy">A dummy data for felp</h2>
+<h2>A dummy data for felp</h2>
 
 <h3>Description</h3>
 
@@ -512,6 +513,7 @@ felp(package = stats)
 <p>An object of class <code>list</code> of length 2.
 </p>
 
+</main>
 
 </div>
 </div>
@@ -526,7 +528,7 @@ Description:
 Package:           felp
 Type:              Package
 Title:             Functional Help for Functions, Objects, and Packages
-Version:           0.5.0
+Version:           0.6.0
 Author:            Atsushi Yasumoto [aut, cph, cre]
                    (&lt;https://orcid.org/0000-0002-8335-495X&gt;)
 Authors@R:         c( person( given = &quot;Atsushi&quot;, family = &quot;Yasumoto&quot;,
@@ -542,19 +544,20 @@ Description:       Enhance R help system by fuzzy search and preview
                    understanding the objects.  The `?p` pseudo-postfix
                    operator displays package documents, and is shorter
                    than help(package = foo).
-URL:               https://github.com/atusy/felp
+URL:               https://felp.atusy.net/,
+                   https://github.com/atusy/felp
 BugReports:        https://github.com/atusy/felp/issues
 License:           MIT + file LICENSE
 Encoding:          UTF-8
 Roxygen:           list(markdown = TRUE)
-RoxygenNote:       7.2.3
+RoxygenNote:       7.3.1
 Imports:           prettycode, callr, curl, data.table, dplyr,
-                   htmltools, magrittr, matrixStats, miniUI, reactable,
-                   rstudioapi, rlang, shiny, stringi, utils
-Suggests:          knitr, printr, testthat (&gt;= 2.1.0), covr, rmarkdown
+                   htmltools, magrittr, matrixStats, memoise, miniUI,
+                   reactable, rstudioapi, rlang, shiny, stringi, utils
+Suggests:          knitr, printr, testthat (&gt;= 2.1.0),
 VignetteBuilder:   knitr
 Language:          en-US
-Built:             R 4.3.3; ; 2024-04-18 15:02:11 UTC; unix
+Built:             R 4.4.1; ; 2024-09-25 00:48:23 UTC; unix
 
 Index:
 

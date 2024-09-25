@@ -1,3 +1,13 @@
+# felp 0.6.0
+
+- Fixed `fuzzyhelp()` not showing preview on RStudio Server (#23).
+- Remove **covr** and **rmarkdown** from suggests (#24).
+- Improved Shiny UI of `fuzzyhelp()` (#25)
+    - resize with CSS instead of JS so that resize works properly on Chrome and Firefox
+    - increase height of help viewer
+    - theming TOC to be striped, be dense, and to highlight hovered-row
+- Improved performance of `fuzzyhelp()` (#26)
+
 # felp 0.5.0
 
 - On `fuzzyhelp()`, help/vignette contents gain syntax highlights and links. It formerly used `Rd2HTML()` to generate HTML contents. Now the contents inherit from a help server with `startDynamicHelp()`, which means they are exactly same as the contents of `help()` or `vignette()`.
